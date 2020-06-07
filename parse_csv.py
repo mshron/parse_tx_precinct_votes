@@ -1,3 +1,14 @@
+"""
+Parse csv extracts of Texas precinct vote files.
+
+Usage: cat input.csv | parse_csv.py
+
+Note that this kind of tabular input was rarer, and often came in Excel formats which needed to be exported to CSV for this process. The majority of the well-formatted machine-readable files were pdf and ascii and would have been read by the other programs.
+
+Big picture, this is a simple state machine that tries to figure out where it is in the file based on clues and then parses the candidate names and vote totals as it goes.
+
+We have been pulling data together into a big Google Sheet. This program puts out to standard out. I've been running them manually to see the results, then putting the standard out to a file and importing the file into Google Sheets as a csv.
+"""
 import sys
 import csv
 import re

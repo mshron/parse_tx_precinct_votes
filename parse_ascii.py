@@ -1,3 +1,14 @@
+"""
+Parse ascii files of Texas precinct votes
+
+Usage: parse_ascii.py input_file.asc [offset]
+
+We have been pulling data together into a big Google Sheet. This program puts out to standard out. I've been running them manually to see the results, then putting the standard out to a file and importing the file into Google Sheets as a csv.
+
+It turns out that the vote information is encoded in the long numerical string that is in the first column. In all but one case, the vote totals were in positions 12 to 18 (inclusive), left-padded with zeros. In one case they were shifted by 1, so there is an option to put in a shift.
+
+For a faster workflow, use ./test.sh and ./parse.sh to avoid repetition.
+"""
 import sys
 import csv
 import re

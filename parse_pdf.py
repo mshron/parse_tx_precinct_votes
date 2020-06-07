@@ -1,3 +1,16 @@
+"""
+Parse pdf files of Texas precinct votes
+
+We have been pulling data together into a big Google Sheet. Unlike the other two programs, this one puts out to standard out. It runs much more slowly, since it needs to parse complex pdfs in Java, and it was more convenient to let this run in the background and check result files than it was to run quickly to standard out like the others.
+
+Usage: parse_pdf.py input.pdf output.csv finalpage style
+
+This program parses every page of a pdf (some are over a thousand pages, and can take an hour or more to parse), checking for president or US senate races and moving on otherwise. Because of memory issues, it parses one page at a time, and so needs to be told when to end.
+
+There are, unfortunately, several slight differences by county, each of which has been declared a "style", named after the first county which was in that style. Galveston was the most common style.
+"""
+
+
 import sys
 
 from tabula import read_pdf
